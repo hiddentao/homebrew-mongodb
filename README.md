@@ -41,3 +41,10 @@ rs.PRIMARY>
 ```
 
 Congratulations! You now have a working local replica set with mongodb.
+
+
+### Troubleshooting
+
+If `setup.sh` is unable to connect to the running `mongod` instances then it means there was an error starting up the server. Look in the log files in `/usr/local/var/log/mongodb1` to find out the case.
+
+If you were previously running replica sets with MongoDB 2.x and have since upgraded to 3.x then you may need to delete your existing db data folders (since they were created with the `mmapv1` engine rather than `wiredTiger` which is now the default). Your exisng db data folders are at `/usr/local/var/mongodbN` (where `N` is `1`, `2` and `3`).
